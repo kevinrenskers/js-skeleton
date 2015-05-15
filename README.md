@@ -6,7 +6,7 @@ A simple JavaScript Single Page Application skeleton, very much a work in progre
 
 ## Current features:
 
-* Written using the [AirBbB code style](https://github.com/airbnb/javascript), checked with ESLint
+* Written using the [AirBnB code style](https://github.com/airbnb/javascript), checked with ESLint
 * Uses [Ampersand.js](https://ampersandjs.com) for everything except the view layer
 * Uses [React](http://facebook.github.io/react/) for the views
 * Uses ES6 and JSX via [Babel](https://babeljs.io)
