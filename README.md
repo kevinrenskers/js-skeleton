@@ -2,6 +2,10 @@
 
 Looking into frameworks, libraries and build systems to use. Very much a work in progress.
 
+Each experiment will have a similar output, a very simple hello world page. They must all use a router to display the
+"home" page, have auto-reloading enabled in dev mode and produce minified ready-to-deploy producion builds with one
+command.
+
 ## Current branches with experiments
 
 * [ampersand-react-webpack](https://github.com/kevinrenskers/js-skeleton/tree/ampersand-react-webpack)
