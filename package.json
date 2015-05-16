@@ -11,7 +11,7 @@
   "scripts": {
     "prebuild": "rm -rf ./public && mkdir public",
     "build": "NODE_ENV=production webpack",
-    "deploy": "surge -p public",
+    "deploy": "surge -p public -d painstaking-park.surge.sh",
     "start": "webpack-dev-server",
     "test": "eslint src",
     "yolo": "npm run test && npm version minor && git push origin master --tags && npm run build && npm run deploy"

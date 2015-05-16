@@ -8,9 +8,25 @@ export default React.createClass({
     name: React.PropTypes.string
   },
 
+  getInitialState() {
+    return {
+      text: 'Type here'
+    };
+  },
+
+  onChange(e) {
+    this.setState({
+      text: e.target.value
+    });
+  },
+
   render() {
     return (
-      <p>{this.props.greeting}, {this.props.name}!</p>
+      <div>
+        <h2>{this.props.greeting}, {this.props.name}!</h2>
+        <input type="text" value={this.state.text} onChange={this.onChange} />
+        <p>{this.state.text}</p>
+      </div>
     );
   }
 });

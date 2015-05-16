@@ -15,6 +15,7 @@ var packageJson = require('./package.json');
 
 var isDev = process.env.NODE_ENV !== 'production';
 var useHash = false;
+var config;
 
 function buildFilename(pack, hash, ext) {
   var middle;
@@ -27,7 +28,7 @@ function buildFilename(pack, hash, ext) {
   return [pack.name, middle, (ext || 'js')].join('.');
 }
 
-var config = {
+config = {
   entry: ['./src/app'],
 
   output: {
@@ -40,11 +41,7 @@ var config = {
     extensions: ['', '.js', '.json']
   },
 
-  plugins: [
-    new HtmlPlugin({
-      html: true
-    })
-  ],
+  plugins: [],
 
   module: {
     loaders: [
@@ -81,10 +78,13 @@ if (isDev) {
     'webpack/hot/only-dev-server'
   );
 
-  config.plugins = config.plugins.concat([
+  config.plugins.push(
+    new HtmlPlugin({
+      html: true
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-  ]);
+  );
 
   config.module.loaders[0].loaders.unshift('react-hot');
 
@@ -103,6 +103,14 @@ if (isDev) {
   ];
 } else {
   config.plugins.push(
+    new HtmlPlugin({
+      html: function(data) {
+        return {
+          '200.html': data.defaultTemplate(),
+          'index.html': data.defaultTemplate()
+        };
+      }
+    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.UglifyJsPlugin({
