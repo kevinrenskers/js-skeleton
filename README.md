@@ -17,8 +17,8 @@ Deployed to http://painstaking-park.surge.sh.
 ## Usage
 
 * `npm run start` to start a local development server with hot reloading
+* `npm run test` to lint the code
 * `npm run build` to create a static build to the public folder
-* `npm run test` to lint the code 
 * `npm run deploy` to deploy the public folder using Surge
 
 ## Thoughts
