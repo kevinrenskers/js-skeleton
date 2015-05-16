@@ -2,8 +2,9 @@
 
 Looking into frameworks, libraries and build systems to use. Very much a work in progress.
 
-Each experiment will have a similar output, a very simple hello world page. They must all use a router to display the
-"home" page, have auto-reloading enabled in dev mode and produce minified ready-to-deploy producion builds with one
+Each experiment will have a similar output, a very simple hello world page with an input field that simply 
+renders its contents below it, and a separate page showing a very simple todo list. They must all use a router, 
+have auto-reloading enabled in dev mode and produce minified ready-to-deploy producion builds with one
 command.
 
 ## Current branches with experiments
