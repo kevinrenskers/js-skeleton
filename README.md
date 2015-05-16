@@ -1,28 +1,12 @@
-# JavaScript SPA skeleton
+# JavaScript SPA research
 
-[![js-standard-style](https://img.shields.io/badge/code%20style-airbnb-blue.svg?style=flat)](https://github.com/airbnb/javascript)
+Looking into frameworks, libraries and build systems to use. Very much a work in progress.
 
-A simple JavaScript Single Page Application skeleton, very much a work in progress.
+## Current branches with experiments
 
-## Current features:
+* [ampersand-react-webpack](https://github.com/kevinrenskers/js-skeleton/tree/ampersand-react-webpack)
 
-* Written using the [AirBnB code style](https://github.com/airbnb/javascript), checked with ESLint
-* Uses [Ampersand.js](https://ampersandjs.com) for everything except the view layer
-* Uses [React](http://facebook.github.io/react/) for the views
-* Uses ES6 and JSX via [Babel](https://babeljs.io)
-* Uses webpack with webpack-dev-server and react-hot-loader
-* Uses PostCSS with the imports, nested, vars and autoprefixer plugins
-* Creates minified builds
-* Uses simple NPM scripts instead of Gulp or Grunt
-* Uses [Surge](https://surge.sh) to deploy the public folder 
-
-## Usage:
-
-* `npm run start` to start a local development server with hot reloading
-* `npm run build` to create a static build to the public folder
-* `npm run deploy` to deploy the public folder using Surge
-
-## Looking into using: 
+## Going to look into 
 
 * Gulp, [Browserify](http://browserify.org), [watchify](https://github.com/substack/watchify) and [babelify](https://github.com/babel/babelify) instead of webpack.
   Webpack has some nice features (hello requiring css!) and completely replaces a build system like Gulp, but its config is an eye sore.
