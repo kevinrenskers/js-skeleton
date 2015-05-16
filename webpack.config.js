@@ -10,10 +10,11 @@ var cssimport = require('postcss-import');
 var cssmerge = require('postcss-merge-rules');
 var nested = require('postcss-nested');
 var HtmlPlugin = require('./lib/html-plugin');
-var getPackage = require('./lib/get-package');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var packageJson = require('./package.json');
 
-const isDev = process.env.NODE_ENV !== 'production';
+var isDev = process.env.NODE_ENV !== 'production';
+var useHash = false;
 
 function buildFilename(pack, hash, ext) {
   var middle;
@@ -31,7 +32,8 @@ var config = {
 
   output: {
     path: path.join(__dirname, 'public'),
-    filename: isDev ? 'app.js' : buildFilename(getPackage(null), false, 'js')
+    filename: isDev ? 'app.js' : buildFilename(packageJson, useHash, 'js'),
+    cssFilename: isDev ? 'app.css' : buildFilename(packageJson, useHash, 'css')
   },
 
   resolve: {

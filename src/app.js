@@ -1,14 +1,12 @@
-require('./styles/main.css');
-const React = require('react');
+import app from 'ampersand-app';
+import Router from './router';
+import styles from './styles/main.css';
 
-const Hello = React.createClass({
-  displayName: 'Hello',
-
-  propTypes: { name: React.PropTypes.string },
-
-  render() {
-    return <h1>Hello, {this.props.name}! :)</h1>;
+window.app = app.extend({
+  init() {
+    this.router = new Router();
+    this.router.history.start({ pushState: true });
   }
 });
 
-React.render(<Hello name='World'/>, document.body);
+app.init();
