@@ -5,7 +5,8 @@ export default React.createClass({
   displayName: 'Link',
 
   propTypes: {
-    href: React.PropTypes.string
+    children: React.PropTypes.string.isRequired,
+    href: React.PropTypes.string.isRequired
   },
 
   go(e) {

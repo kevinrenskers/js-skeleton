@@ -4,6 +4,10 @@ import Link from '../components/link';
 const TodoList = React.createClass({
   displayName: 'TodoList',
 
+  propTypes: {
+    items: React.PropTypes.array.isRequired
+  },
+
   render() {
     function createItem(itemText) {
       return <li>{itemText}</li>;
