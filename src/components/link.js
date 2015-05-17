@@ -14,6 +14,6 @@ export default React.createClass({
   },
 
   render() {
-    return <a href={this.props.href} onClick={this.go}>{this.props.children}</a>
+    return <a href={this.props.href} onClick={this.go}>{this.props.children}</a>;
   }
 });
