@@ -1,6 +1,6 @@
 import app from 'ampersand-app';
 import Router from './router';
-import styles from './styles/main.css';
+import './styles/main.css';
 
 window.app = app.extend({
   init() {

@@ -1,21 +1,6 @@
 import React from 'react';
 import Link from '../components/link';
-
-const TodoList = React.createClass({
-  displayName: 'TodoList',
-
-  propTypes: {
-    items: React.PropTypes.array.isRequired
-  },
-
-  render() {
-    function createItem(itemText) {
-      return <li>{itemText}</li>;
-    }
-
-    return <ul>{this.props.items.map(createItem)}</ul>;
-  }
-});
+import TodoList from '../components/todo-list';
 
 export default React.createClass({
   displayName: 'TodoPage',
