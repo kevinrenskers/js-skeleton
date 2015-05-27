@@ -1,12 +1,15 @@
-import app from 'ampersand-app';
-import Router from './router';
 import './styles/main.css';
+import {element, render, tree} from 'deku';
 
-window.app = app.extend({
-  init() {
-    this.router = new Router();
-    this.router.history.start({ pushState: true });
+// Create a component
+let HelloWorld = {
+  render(component) {
+    return <div>{component.props.text}</div>;
   }
-});
+};
 
-app.init();
+// Create a tree
+let app = tree(<HelloWorld text="Hello World! :)" />);
+
+// Render the tree to the DOM
+render(app, document.body);

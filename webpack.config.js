@@ -2,13 +2,6 @@
 
 var path = require('path');
 var webpack = require('webpack');
-var autoprefixer = require('autoprefixer-core');
-var mqpacker = require('css-mqpacker');
-var csswring = require('csswring');
-var cssvars = require('postcss-custom-properties');
-var cssimport = require('postcss-import');
-var cssmerge = require('postcss-merge-rules');
-var nested = require('postcss-nested');
 var HtmlPlugin = require('./lib/html-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var packageJson = require('./package.json');
@@ -75,7 +68,7 @@ if (isDev) {
 
   config.entry.unshift(
     'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server'
+    'webpack/hot/dev-server'
   );
 
   config.plugins.push(
@@ -91,16 +84,11 @@ if (isDev) {
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loader: 'style-loader!css-loader!postcss-loader'
+      loader: 'style-loader!css-loader!cssnext-loader'
     }
   );
 
-  config.postcss = [
-    cssimport(),
-    nested(),
-    cssvars(),
-    autoprefixer({browsers: ['last 2 versions']})
-  ];
+  config.cssnext = {};
 } else {
   config.plugins.push(
     new HtmlPlugin({
@@ -134,19 +122,13 @@ if (isDev) {
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css-loader!postcss-loader')
+      loader: ExtractTextPlugin.extract('style-loader', 'css-loader!cssnext-loader')
     }
   );
 
-  config.postcss = [
-    cssimport(),
-    nested(),
-    cssvars(),
-    cssmerge(),
-    autoprefixer({browsers: ['last 2 versions']}),
-    mqpacker(),
-    csswring()
-  ];
+  config.cssnext = {
+    compress: true
+  };
 }
 
 module.exports = config;
