@@ -79,8 +79,6 @@ if (isDev) {
     new webpack.NoErrorsPlugin()
   );
 
-  config.module.loaders[0].loaders.unshift('react-hot');
-
   config.module.loaders.push(
     {
       test: /\.css$/,

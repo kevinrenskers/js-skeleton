@@ -9,7 +9,7 @@ let HelloWorld = {
 };
 
 // Create a tree
-let app = tree(<HelloWorld text="Hello World! :)" />);
+let app = tree(<HelloWorld text="Hello World!" />);
 
 // Render the tree to the DOM
 render(app, document.body);
