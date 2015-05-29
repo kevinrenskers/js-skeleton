@@ -21,10 +21,10 @@ command.
   [Fast browserify builds with watchify](https://github.com/gulpjs/gulp/blob/master/docs/recipes/fast-browserify-builds-with-watchify.md) recipe.
 * [Riot](https://muut.com/riotjs/) instead of React. Uses a custom tags system. 
   [Riotify](https://github.com/jhthorsen/riotify) for Browserify, or [riotjs-loader](https://github.com/esnunes/riotjs-loader) for webpack.
-* [Deku](https://github.com/segmentio/deku) instead of React. Uses JSX.
 * [Mithril](http://lhorie.github.io/mithril/) instead of Ampersand.js and React. Uses JSX.
 * [Angular 2](https://angular.io).
 * [Aurelia](http://aurelia.io).
+* [Cycle](https://github.com/staltz/cycle).
 
 ## Credits
 
