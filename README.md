@@ -7,9 +7,10 @@ renders its contents below it, and a separate page showing a very simple todo li
 have auto-reloading enabled in dev mode and produce minified ready-to-deploy producion builds with one
 command.
 
-## Current branches with experiments
+## Current experiments
 
-* [ampersand-react-webpack](https://github.com/kevinrenskers/js-skeleton/tree/ampersand-react-webpack)
+* [ampersand-react-webpack](https://github.com/kevinrenskers/js-skeleton/tree/ampersand-react-webpack) ([blog post](http://www.mixedcase.nl/articles/2015/05/17/research-front-end-part-1/))
+* [deku-cssnext-webpack](https://github.com/kevinrenskers/js-skeleton/tree/deku-cssnext-webpack) (WIP)
 
 ## Going to look into 
 
