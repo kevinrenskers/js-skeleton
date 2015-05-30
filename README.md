@@ -12,7 +12,7 @@
 * Uses simple NPM scripts instead of Gulp or Grunt
 * Uses [Surge](https://surge.sh) to deploy the public folder 
 
-Deployed to http://painstaking-park.surge.sh.
+Deployed to http://ampersand-react-webpack.surge.sh.
 
 ## Usage
 
@@ -23,7 +23,6 @@ Deployed to http://painstaking-park.surge.sh.
 
 ## Thoughts
 
-* ESLint is giving false errors about spacing after a comma in JSX. 
 * React is kind of nice. Not convinced about JSX, but there's a big community and lots of resources.
 * Using ampersand-router in a React app means you need to create some kind of Link component,
   otherwise you'll get full page reloads.
