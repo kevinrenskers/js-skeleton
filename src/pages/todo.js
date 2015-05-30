@@ -1,42 +1,40 @@
-import React from 'react';
-import Link from '../components/link';
+import {element} from 'deku';
 import TodoList from '../components/todo-list';
 
-export default React.createClass({
-  displayName: 'TodoPage',
+function initialState() {
+  return {
+    items: []
+  };
+}
 
-  getInitialState() {
-    return {
-      items: [],
-      text: ''
-    };
-  },
+function render(component, setState) {
+  let {state} = component;
 
-  onChange(e) {
-    this.setState({
-      text: e.target.value
-    });
-  },
-
-  handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
-    this.setState({
-      items: this.state.items.concat([this.state.text]),
-      text: ''
-    });
-  },
 
-  render() {
-    return (
-      <div>
-        <h1>TODO</h1>
-        <TodoList items={this.state.items} />
-        <form onSubmit={this.handleSubmit}>
-          <input onChange={this.onChange} value={this.state.text} />
-          <button>{'Add #' + (this.state.items.length + 1)}</button>
-        </form>
-        <p><Link href="/">Back to home</Link></p>
-      </div>
-    );
+    setState({
+      items: state.items.concat([component.input.value])
+    });
+
+    component.input.value = '';
   }
-});
+
+  return (
+    <div>
+      <h1>TODO</h1>
+      <TodoList items={state.items} />
+      <form onSubmit={handleSubmit}>
+        <input />
+        <button>{'Add #' + (state.items.length + 1)}</button>
+      </form>
+      <p><a href="/">Back to home</a></p>
+    </div>
+  );
+}
+
+function afterRender(component, el) {
+  component.input = el.querySelector('input');
+}
+
+export default {initialState, render, afterRender};

@@ -33,4 +33,4 @@ function render(component, setState) {
   );
 }
 
-export default {propTypes, render, initialState};
+export default {propTypes, initialState, render};

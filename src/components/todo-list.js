@@ -1,17 +1,19 @@
-import React from 'react';
+import {element} from 'deku';
 
-export default React.createClass({
-  displayName: 'TodoList',
-
-  propTypes: {
-    items: React.PropTypes.array.isRequired
-  },
-
-  render() {
-    function createItem(itemText) {
-      return <li>{itemText}</li>;
-    }
-
-    return <ul>{this.props.items.map(createItem)}</ul>;
+let propTypes = {
+  items: {
+    type: 'array'
   }
-});
+};
+
+function render(component) {
+  let {props, state} = component;
+
+  function createItem(itemText) {
+    return <li>{itemText}</li>;
+  }
+
+  return <ul>{props.items.map(createItem)}</ul>;
+}
+
+export default {propTypes, render};

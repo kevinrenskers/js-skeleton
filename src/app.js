@@ -2,6 +2,7 @@ import page from 'page';
 import {element, tree, render} from 'deku';
 import './styles/main.css';
 import HomePage from './pages/home';
+import TodoPage from './pages/todo';
 
 let app = tree();
 render(app, document.body);
@@ -11,7 +12,7 @@ page('/', () => {
 });
 
 page('/todo', () => {
-  app.mount(<h1>Todo</h1>);
+  app.mount(<TodoPage/>);
 });
 
 page();
