@@ -1,17 +1,15 @@
-import React from 'react';
+import {element} from 'deku';
 import HelloWorld from '../components/hello-world';
-import Link from '../components/link';
 
-export default React.createClass({
-  displayName: 'HomePage',
 
-  render() {
-    return (
-      <div>
-        <h1>Header</h1>
-        <HelloWorld greeting="Hi" name="React" />
-        <Link href="/todo">Todo</Link>
-      </div>
-    );
-  }
-});
+function render() {
+  return (
+    <div>
+      <h1>Header</h1>
+      <HelloWorld greeting="Hi" name="React" />
+      <a href="/todo">Todo</a>
+    </div>
+  );
+}
+
+export default {render};

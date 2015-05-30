@@ -1,15 +1,17 @@
+import page from 'page';
+import {element, tree, render} from 'deku';
 import './styles/main.css';
-import {element, render, tree} from 'deku';
+import HomePage from './pages/home';
 
-// Create a component
-let HelloWorld = {
-  render(component) {
-    return <div>{component.props.text}</div>;
-  }
-};
-
-// Create a tree
-let app = tree(<HelloWorld text="Hello World!" />);
-
-// Render the tree to the DOM
+let app = tree();
 render(app, document.body);
+
+page('/', () => {
+  app.mount(<HomePage/>);
+});
+
+page('/todo', () => {
+  app.mount(<h1>Todo</h1>);
+});
+
+page();
