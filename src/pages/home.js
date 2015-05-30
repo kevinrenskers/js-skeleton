@@ -6,7 +6,7 @@ function render() {
   return (
     <div>
       <h1>Header</h1>
-      <HelloWorld greeting="Hi" name="React" />
+      <HelloWorld greeting="Hi" name="Deku" />
       <a href="/todo">Todo</a>
     </div>
   );
