@@ -24,10 +24,9 @@ Deployed to http://deku-cssnext-webpack.surge.sh.
 ## Thoughts
 
 * Deku is kinda nice, definitely a lot smaller then React. App went down from 141 KB to 31 KB.
-* Not sure about this current `export default {propTypes, initialState, render}` syntax I used, let's look into exporting an object instead.
-* Deku's docs are pretty much non-existent, found it a lot harder to get started with this then React. But once you get started,
-it's so small, not a lot to learn.
+* Deku's docs are pretty much non-existent, found it a lot harder to get started with this vs React. But once you get started, it's so small, not a lot to learn.
 * Nice to get rid of Ampersand, replace it with page.js.
-* Replacing postcss + a ton of plugins with simply cssnext was a good move. I loose the nested syntax but that's not a good idea to
+* Replacing postcss + a ton of plugins with simply cssnext was a good move. I lost the nested syntax but that's not a good idea to
 use anyway. I should really look into local-scoped css, and [oocs](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/).
 See also [this](https://blog.colepeters.com/on-writing-real-css-again/).
+* Note to self: need to look into testing. [mochify](https://github.com/mantoni/mochify.js) looks pretty nice but wouldn't work with webpack I think.

@@ -29,6 +29,7 @@
     "cssnext-loader": "^1.0.1",
     "deku": "^0.4.2",
     "eslint": "^0.21.2",
+    "eslint-plugin-react": "^2.4.0",
     "extract-text-webpack-plugin": "^0.8.1",
     "file-loader": "^0.8.1",
     "find-root": "^0.1.1",

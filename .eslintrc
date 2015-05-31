@@ -23,6 +23,9 @@
     "templateStrings": true,
     "jsx": true
   },
+  "plugins": [
+    "react"
+  ],
   "rules": {
 /**
  * Strict mode
@@ -165,6 +168,26 @@
     "space-before-function-paren": [2, "never"], // http://eslint.org/docs/rules/space-before-function-paren
     "space-infix-ops": 2,            // http://eslint.org/docs/rules/space-infix-ops
     "space-return-throw-case": 2,    // http://eslint.org/docs/rules/space-return-throw-case
-    "spaced-line-comment": 2         // http://eslint.org/docs/rules/spaced-line-comment
+    "spaced-line-comment": 2,        // http://eslint.org/docs/rules/spaced-line-comment
+
+    "react/display-name": 1,
+    "react/jsx-boolean-value": 1,
+    "react/jsx-quotes": 1,
+    "react/jsx-no-undef": 1,
+    "react/jsx-sort-props": 0,
+    "react/jsx-sort-prop-types": 1,
+    "react/jsx-uses-react": [1, {
+      "pragma": "element"
+    }],
+    "react/jsx-uses-vars": 1,
+    "react/no-did-mount-set-state": 1,
+    "react/no-did-update-set-state": 1,
+    "react/no-multi-comp": 1,
+    "react/no-unknown-property": 1,
+    "react/prop-types": 1,
+    "react/react-in-jsx-scope": 0,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 1,
+    "react/wrap-multilines": 1
   }
 }

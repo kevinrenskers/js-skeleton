@@ -1,19 +1,19 @@
 import {element} from 'deku';
 
-let propTypes = {
-  items: {
-    type: 'array'
+export default {
+  propTypes: {
+    items: {
+      type: 'array'
+    }
+  },
+
+  render(component) {
+    let {props} = component;
+
+    function createItem(itemText) {
+      return <li>{itemText}</li>;
+    }
+
+    return <ul>{props.items.map(createItem)}</ul>;
   }
 };
-
-function render(component) {
-  let {props, state} = component;
-
-  function createItem(itemText) {
-    return <li>{itemText}</li>;
-  }
-
-  return <ul>{props.items.map(createItem)}</ul>;
-}
-
-export default {propTypes, render};
