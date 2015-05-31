@@ -3,7 +3,8 @@ import TodoList from '../components/todo-list';
 
 function initialState() {
   return {
-    items: []
+    items: [],
+    text: ''
   };
 }
 
@@ -14,10 +15,15 @@ function render(component, setState) {
     e.preventDefault();
 
     setState({
-      items: state.items.concat([component.input.value])
+      items: state.items.concat([state.text]),
+      text: ''
     });
+  }
 
-    component.input.value = '';
+  function changed(e) {
+    setState({
+      text: e.target.value
+    });
   }
 
   return (
@@ -25,7 +31,7 @@ function render(component, setState) {
       <h1>TODO</h1>
       <TodoList items={state.items} />
       <form onSubmit={handleSubmit}>
-        <input />
+        <input type="text" value={state.text} onInput={changed} />
         <button>{'Add #' + (state.items.length + 1)}</button>
       </form>
       <p><a href="/">Back to home</a></p>
@@ -33,8 +39,4 @@ function render(component, setState) {
   );
 }
 
-function afterRender(component, el) {
-  component.input = el.querySelector('input');
-}
-
-export default {initialState, render, afterRender};
+export default {initialState, render};

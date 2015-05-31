@@ -27,7 +27,7 @@ function render(component, setState) {
   return (
     <div>
       <h2>{props.greeting}, {props.name}!</h2>
-      <input type="text" value={state.text} onKeyUp={changed} />
+      <input type="text" value={state.text} onInput={changed} />
       <p>{state.text}</p>
     </div>
   );
