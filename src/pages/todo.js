@@ -18,7 +18,7 @@ export default React.createClass({
     });
   },
 
-  handleSubmit(e) {
+  onSubmit(e) {
     e.preventDefault();
     this.setState({
       items: this.state.items.concat([this.state.text]),
@@ -31,7 +31,7 @@ export default React.createClass({
       <div>
         <h1>TODO</h1>
         <TodoList items={this.state.items} />
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.onSubmit}>
           <input onChange={this.onChange} value={this.state.text} />
           <button>{'Add #' + (this.state.items.length + 1)}</button>
         </form>

@@ -1,9 +1,11 @@
 {
   "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
   "env": {
     "browser": true,
-    "node": true,
-    "es6": true
+    "node": true
   },
   "ecmaFeatures": {
     "arrowFunctions": true,
@@ -23,25 +25,22 @@
     "templateStrings": true,
     "jsx": true
   },
-  "plugins": [
-    "react"
-  ],
   "rules": {
-/**
- * Strict mode
- */
+    /**
+     * Strict mode
+     */
     // babel inserts "use strict"; for us
     // http://eslint.org/docs/rules/strict
     "strict": [2, "never"],
 
-/**
- * ES6
- */
+    /**
+     * ES6
+     */
     "no-var": 2,                     // http://eslint.org/docs/rules/no-var
 
-/**
- * Variables
- */
+    /**
+     * Variables
+     */
     "no-shadow": 2,                  // http://eslint.org/docs/rules/no-shadow
     "no-shadow-restricted-names": 2, // http://eslint.org/docs/rules/no-shadow-restricted-names
     "no-unused-vars": [2, {          // http://eslint.org/docs/rules/no-unused-vars
@@ -50,11 +49,11 @@
     }],
     "no-use-before-define": 2,       // http://eslint.org/docs/rules/no-use-before-define
 
-/**
- * Possible errors
- */
+    /**
+     * Possible errors
+     */
     "comma-dangle": [2, "never"],    // http://eslint.org/docs/rules/comma-dangle
-    "no-cond-assign": [2, "always"],  // http://eslint.org/docs/rules/no-cond-assign
+    "no-cond-assign": [2, "always"], // http://eslint.org/docs/rules/no-cond-assign
     "no-console": 1,                 // http://eslint.org/docs/rules/no-console
     "no-debugger": 1,                // http://eslint.org/docs/rules/no-debugger
     "no-alert": 1,                   // http://eslint.org/docs/rules/no-alert
@@ -76,9 +75,9 @@
     "use-isnan": 2,                  // http://eslint.org/docs/rules/use-isnan
     "block-scoped-var": 2,           // http://eslint.org/docs/rules/block-scoped-var
 
-/**
- * Best practices
- */
+    /**
+     * Best practices
+     */
     "consistent-return": 2,          // http://eslint.org/docs/rules/consistent-return
     "curly": [2, "multi-line"],      // http://eslint.org/docs/rules/curly
     "default-case": 2,               // http://eslint.org/docs/rules/default-case
@@ -119,14 +118,14 @@
     "wrap-iife": [2, "any"],         // http://eslint.org/docs/rules/wrap-iife
     "yoda": 2,                       // http://eslint.org/docs/rules/yoda
 
-/**
- * Style
- */
+    /**
+     * Style
+     */
     "indent": [2, 2],                // http://eslint.org/docs/rules/
     "brace-style": [2,               // http://eslint.org/docs/rules/brace-style
       "1tbs", {
-      "allowSingleLine": true
-    }],
+        "allowSingleLine": true
+      }],
     "quotes": [
       2, "single", "avoid-escape"    // http://eslint.org/docs/rules/quotes
     ],
@@ -141,8 +140,8 @@
     "eol-last": 2,                   // http://eslint.org/docs/rules/eol-last
     "func-names": 1,                 // http://eslint.org/docs/rules/func-names
     "key-spacing": [2, {             // http://eslint.org/docs/rules/key-spacing
-        "beforeColon": false,
-        "afterColon": true
+      "beforeColon": false,
+      "afterColon": true
     }],
     "new-cap": [2, {                 // http://eslint.org/docs/rules/new-cap
       "newIsCap": true
@@ -168,27 +167,46 @@
     "space-before-function-paren": [2, "never"], // http://eslint.org/docs/rules/space-before-function-paren
     "space-infix-ops": 2,            // http://eslint.org/docs/rules/space-infix-ops
     "space-return-throw-case": 2,    // http://eslint.org/docs/rules/space-return-throw-case
-    "spaced-line-comment": 2,         // http://eslint.org/docs/rules/spaced-line-comment
+    "spaced-line-comment": 2,        // http://eslint.org/docs/rules/spaced-line-comment
 
-/**
- * React
- */
-    "react/display-name": 1,
-    "react/jsx-boolean-value": 1,
-    "react/jsx-quotes": 1,
-    "react/jsx-no-undef": 1,
+    /**
+     * JSX style
+     */
+    "react/display-name": 0,
+    "react/jsx-boolean-value": 2,
+    "react/jsx-quotes": [2, "double"],
+    "react/jsx-no-undef": 2,
     "react/jsx-sort-props": 0,
-    "react/jsx-sort-prop-types": 1,
-    "react/jsx-uses-react": 1,
-    "react/jsx-uses-vars": 1,
-    "react/no-did-mount-set-state": 1,
-    "react/no-did-update-set-state": 1,
-    "react/no-multi-comp": 1,
-    "react/no-unknown-property": 1,
-    "react/prop-types": 1,
-    "react/react-in-jsx-scope": 1,
-    "react/self-closing-comp": 1,
-    "react/sort-comp": 1,
-    "react/wrap-multilines": 1
+    "react/jsx-sort-prop-types": 0,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "react/no-did-mount-set-state": [2, "allow-in-func"],
+    "react/no-did-update-set-state": 2,
+    "react/no-multi-comp": 2,
+    "react/no-unknown-property": 2,
+    "react/prop-types": 2,
+    "react/react-in-jsx-scope": 2,
+    "react/self-closing-comp": 2,
+    "react/wrap-multilines": 2,
+    "react/sort-comp": [2, {
+      "order": [
+        "displayName",
+        "mixins",
+        "statics",
+        "propTypes",
+        "getDefaultProps",
+        "getInitialState",
+        "componentWillMount",
+        "componentDidMount",
+        "componentWillReceiveProps",
+        "shouldComponentUpdate",
+        "componentWillUpdate",
+        "componentWillUnmount",
+        "/^on.+$/",
+        "/^get.+$/",
+        "/^render.+$/",
+        "render"
+      ]
+    }]
   }
 }

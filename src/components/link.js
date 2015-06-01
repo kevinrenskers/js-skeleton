@@ -9,12 +9,12 @@ export default React.createClass({
     href: React.PropTypes.string.isRequired
   },
 
-  go(e) {
+  onClick(e) {
     e.preventDefault();
     app.router.navigate(this.props.href);
   },
 
   render() {
-    return <a href={this.props.href} onClick={this.go}>{this.props.children}</a>;
+    return <a href={this.props.href} onClick={this.onClick}>{this.props.children}</a>;
   }
 });
