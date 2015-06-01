@@ -169,7 +169,10 @@
     "space-return-throw-case": 2,    // http://eslint.org/docs/rules/space-return-throw-case
     "spaced-line-comment": 2,        // http://eslint.org/docs/rules/spaced-line-comment
 
-    "react/display-name": 1,
+    /**
+     * JSX style
+     */
+    "react/display-name": 0,
     "react/jsx-boolean-value": 2,
     "react/jsx-quotes": [2, "double"],
     "react/jsx-no-undef": 2,
@@ -186,7 +189,7 @@
     "react/prop-types": 2,
     "react/react-in-jsx-scope": 0,
     "react/self-closing-comp": 2,
-    "react/sort-comp": 1,
-    "react/wrap-multilines": 2
+    "react/wrap-multilines": 2,
+    "react/sort-comp": 0
   }
 }
