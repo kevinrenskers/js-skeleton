@@ -1,0 +1,9 @@
+@import './home2.css';
+
+:root {
+  --color: red;
+}
+
+.title {
+  color: var(--color);
+}

@@ -82,7 +82,7 @@ if (isDev) {
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loader: 'style-loader!css-loader!cssnext-loader'
+      loader: 'style-loader!css-loader?module&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!cssnext-loader'
     }
   );
 
@@ -120,7 +120,7 @@ if (isDev) {
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css-loader!cssnext-loader')
+      loader: ExtractTextPlugin.extract('style-loader', 'css-loader?module&importLoaders=1&localIdentName=[hash:base64:5]!cssnext-loader')
     }
   );
 

@@ -1,5 +1,6 @@
 import {element} from 'deku';
 import TodoList from '../components/todo-list';
+import styles from './todo.css';
 
 export default {
   initialState() {
@@ -29,7 +30,7 @@ export default {
 
     return (
       <div>
-        <h1>TODO</h1>
+        <h1 class={styles.title}>TODO</h1>
         <TodoList items={state.items} />
         <form onSubmit={handleSubmit}>
           <input type="text" value={state.text} onInput={changed} />
