@@ -16,10 +16,6 @@ command.
 
 ## Future experiments 
 
-* Gulp, [Browserify](http://browserify.org), [watchify](https://github.com/substack/watchify) and [babelify](https://github.com/babel/babelify) instead of webpack.
-  Webpack has some nice features (hello requiring css!) and completely replaces a build system like Gulp, but its config is an eye sore.
-  While I could run watchify from the command line without using a build system, I still need Gulp for cssnext, since it doesn't have a watch mode.
-  [Fast browserify builds with watchify](https://github.com/gulpjs/gulp/blob/master/docs/recipes/fast-browserify-builds-with-watchify.md) recipe.
 * [Riot](https://muut.com/riotjs/). Uses a custom tags system. 
   [Riotify](https://github.com/jhthorsen/riotify) for Browserify, or [riotjs-loader](https://github.com/esnunes/riotjs-loader) for webpack.
 * [Mithril](http://lhorie.github.io/mithril/). Uses JSX.
