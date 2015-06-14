@@ -1,18 +1,16 @@
-# JavaScript SPA skeleton - deku-cssnext-webpack
+# JavaScript SPA skeleton - angularjs-webpack
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-airbnb-blue.svg?style=flat)](https://github.com/airbnb/javascript)
 
 * Written using the [AirBnB code style](https://github.com/airbnb/javascript), checked with ESLint
-* Uses [page.js](https://github.com/visionmedia/page.js) for the router
-* Uses [Deku](https://github.com/dekujs/deku) for the views
+* Uses [UI-Router](https://github.com/angular-ui/ui-router) for the router
 * Uses ES6 and JSX via [Babel](https://babeljs.io)
 * Uses webpack with webpack-dev-server
-* Uses cssnext
 * Creates minified builds
 * Uses simple NPM scripts instead of Gulp or Grunt
 * Uses [Surge](https://surge.sh) to deploy the public folder 
 
-Deployed to http://deku-cssnext-webpack.surge.sh.
+Deployed to http://angularjs-webpack.surge.sh.
 
 ## Usage
 
@@ -23,10 +21,13 @@ Deployed to http://deku-cssnext-webpack.surge.sh.
 
 ## Thoughts
 
-* Deku is kinda nice, definitely a lot smaller then React. App went down from 141 KB to 31 KB.
-* Deku's docs are pretty much non-existent, found it a lot harder to get started with this vs React. But once you get started, it's so small, not a lot to learn.
-* Nice to get rid of Ampersand, replace it with page.js.
-* Replacing postcss + a ton of plugins with simply cssnext was a good move. I lost the nested syntax but that's not a good idea to
-use anyway. I should really look into local-scoped css, and [oocs](http://www.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/).
-See also [this](https://blog.colepeters.com/on-writing-real-css-again/).
-* Note to self: need to look into testing. [mochify](https://github.com/mantoni/mochify.js) looks pretty nice but wouldn't work with webpack I think.
+I've been building a pretty large and complex AngularJS app for more then a year now, 
+without using any module system, written in ES5 and using a pretty complicated Gulp
+setup. This was an exercise to see what a very simple app would look like in a more
+modern way.
+ 
+It's a lot better then our current setup, I pretty much love it. The only thing I'm not 
+too sure of still is the webpack config, it's still a beast. Also compared to Deku and 
+React building the index.html file is a bit more complicated because of the tags needed
+for AngularJS, initial HTML, etc. I'm sure I could find a better way then the HtmlPlugin
+that's currently used.

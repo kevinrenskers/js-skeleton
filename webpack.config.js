@@ -1,13 +1,20 @@
 /*eslint no-var:0 */
 
+var fs = require('fs');
 var path = require('path');
+var rimraf = require('rimraf');
 var webpack = require('webpack');
-var HtmlPlugin = require('./lib/html-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlPlugin = require('./lib/html-plugin');
+var autoPrefixer = require('autoprefixer-core');
 var packageJson = require('./package.json');
 
-var isDev = process.env.NODE_ENV !== 'production';
+// figure out if we're running `webpack` or `webpack-dev-server`
+// we'll use this as the default for `isDev`
+var isDev = process.argv[1].indexOf('webpack-dev-server') !== -1;
+
 var useHash = false;
+var clearBeforeBuild = true;
 var config;
 
 function buildFilename(pack, hash, ext) {
@@ -21,38 +28,49 @@ function buildFilename(pack, hash, ext) {
   return [pack.name, middle, (ext || 'js')].join('.');
 }
 
-config = {
-  entry: ['./src/app'],
+function getHtml(data) {
+  return data.defaultTemplate({
+    html: '<div ui-view></div>',
+    base: '/'
+  });
+}
 
+config = {
+  context: path.join(__dirname, 'src'),
+  entry: ['./index.js'],
   output: {
     path: path.join(__dirname, 'public'),
-    filename: isDev ? 'app.js' : buildFilename(packageJson, useHash, 'js'),
-    cssFilename: isDev ? 'app.css' : buildFilename(packageJson, useHash, 'css')
+    filename: isDev ? 'bundle.js' : buildFilename(packageJson, useHash, 'js'),
+    cssFilename: isDev ? 'bundle.css' : buildFilename(packageJson, useHash, 'css')
   },
 
-  resolve: {
-    extensions: ['', '.js', '.json']
-  },
-
-  plugins: [],
+  plugins: [
+    new HtmlPlugin({
+      html: function html(data) {
+        return {
+          'index.html': getHtml(data),
+          '200.html': getHtml(data)
+        };
+      }
+    })
+  ],
 
   module: {
     loaders: [
       {
-        test: /(\.js$)|(\.jsx$)/,
-        include: path.join(__dirname, 'src'),
-        loaders: ['babel-loader']
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loaders: ['ng-annotate', 'babel']
       },
       {
-        test: /\.json$/,
-        loaders: ['json']
-      },
-      {
-        test: /\.(otf|eot|svg|ttf|woff)/,
-        loader: 'url-loader?limit=10000'
+        test: /\.html$/,
+        exclude: /node_modules/,
+        loaders: ['raw']
       }
     ]
-  }
+  },
+
+  postcss: [autoPrefixer()]
 };
 
 if (isDev) {
@@ -72,9 +90,6 @@ if (isDev) {
   );
 
   config.plugins.push(
-    new HtmlPlugin({
-      html: true
-    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   );
@@ -82,21 +97,21 @@ if (isDev) {
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loader: 'style-loader!css-loader?module&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!cssnext-loader'
+      loaders: ['style', 'css?sourceMap']
+    },
+    {
+      test: /\.less$/,
+      loaders: ['style', 'css?sourceMap', 'less?sourceMap']
     }
   );
-
-  config.cssnext = {};
 } else {
+  // clear out output folder if so configured
+  if (clearBeforeBuild) {
+    rimraf.sync(config.output.path);
+    fs.mkdirSync(config.output.path);
+  }
+
   config.plugins.push(
-    new HtmlPlugin({
-      html: function(data) {
-        return {
-          '200.html': data.defaultTemplate(),
-          'index.html': data.defaultTemplate()
-        };
-      }
-    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.UglifyJsPlugin({
@@ -110,9 +125,6 @@ if (isDev) {
     }),
     new ExtractTextPlugin(config.output.cssFilename, {
       allChunks: true
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {NODE_ENV: JSON.stringify('production')}
     })
   );
 
@@ -120,13 +132,13 @@ if (isDev) {
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css-loader?module&importLoaders=1&localIdentName=[hash:base64]!cssnext-loader')
+      loader: ExtractTextPlugin.extract('style', 'css!postcss')
+    },
+    {
+      test: /\.less/,
+      loader: ExtractTextPlugin.extract('style', 'css!postcss!less')
     }
   );
-
-  config.cssnext = {
-    compress: true
-  };
 }
 
 module.exports = config;
