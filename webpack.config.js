@@ -1,13 +1,19 @@
 /*eslint no-var:0 */
 
+var fs = require('fs');
 var path = require('path');
+var rimraf = require('rimraf');
 var webpack = require('webpack');
 var HtmlPlugin = require('./lib/html-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var packageJson = require('./package.json');
 
-var isDev = process.env.NODE_ENV !== 'production';
+// figure out if we're running `webpack` or `webpack-dev-server`
+// we'll use this as the default for `isDev`
+var isDev = process.argv[1].indexOf('webpack-dev-server') !== -1;
+
 var useHash = false;
+var clearBeforeBuild = true;
 var config;
 
 function buildFilename(pack, hash, ext) {
@@ -30,26 +36,23 @@ config = {
     cssFilename: isDev ? 'app.css' : buildFilename(packageJson, useHash, 'css')
   },
 
-  resolve: {
-    extensions: ['', '.js', '.json']
-  },
-
-  plugins: [],
+  plugins: [
+    new HtmlPlugin({
+      html: function(data) {
+        return {
+          '200.html': data.defaultTemplate(),
+          'index.html': data.defaultTemplate()
+        };
+      }
+    })
+  ],
 
   module: {
     loaders: [
       {
         test: /(\.js$)|(\.jsx$)/,
         include: path.join(__dirname, 'src'),
-        loaders: ['babel-loader']
-      },
-      {
-        test: /\.json$/,
-        loaders: ['json']
-      },
-      {
-        test: /\.(otf|eot|svg|ttf|woff)/,
-        loader: 'url-loader?limit=10000'
+        loaders: ['babel']
       }
     ]
   }
@@ -72,9 +75,6 @@ if (isDev) {
   );
 
   config.plugins.push(
-    new HtmlPlugin({
-      html: true
-    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   );
@@ -82,21 +82,19 @@ if (isDev) {
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loader: 'style-loader!css-loader?module&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!cssnext-loader'
+      loaders: ['style', 'css?module&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'cssnext']
     }
   );
 
   config.cssnext = {};
 } else {
+  // clear out output folder if so configured
+  if (clearBeforeBuild) {
+    rimraf.sync(config.output.path);
+    fs.mkdirSync(config.output.path);
+  }
+
   config.plugins.push(
-    new HtmlPlugin({
-      html: function(data) {
-        return {
-          '200.html': data.defaultTemplate(),
-          'index.html': data.defaultTemplate()
-        };
-      }
-    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.UglifyJsPlugin({
@@ -110,9 +108,6 @@ if (isDev) {
     }),
     new ExtractTextPlugin(config.output.cssFilename, {
       allChunks: true
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {NODE_ENV: JSON.stringify('production')}
     })
   );
 
@@ -120,7 +115,7 @@ if (isDev) {
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract('style-loader', 'css-loader?module&importLoaders=1&localIdentName=[hash:base64]!cssnext-loader')
+      loader: ExtractTextPlugin.extract('style', 'css?module&importLoaders=1&localIdentName=[hash:base64]!cssnext')
     }
   );
 
