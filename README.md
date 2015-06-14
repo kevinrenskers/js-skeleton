@@ -1,33 +1,32 @@
-# JavaScript SPA skeleton - angularjs-webpack
+# JavaScript SPA skeleton - angularjs-browserify
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-airbnb-blue.svg?style=flat)](https://github.com/airbnb/javascript)
 
 * Written using the [AirBnB code style](https://github.com/airbnb/javascript), checked with ESLint
 * Uses [UI-Router](https://github.com/angular-ui/ui-router) for the router
 * Uses ES6 and JSX via [Babel](https://babeljs.io)
-* Uses webpack with webpack-dev-server
+* Uses browserify, watchify, and gulp
 * Creates minified builds
-* Uses simple NPM scripts instead of Gulp or Grunt
 * Uses [Surge](https://surge.sh) to deploy the public folder 
 
-Deployed to http://angularjs-webpack.surge.sh.
+Deployed to http://angularjs-browserify.surge.sh.
 
 ## Usage
 
-* `npm run start` to start a local development server with hot reloading
+* `gulp start` to start a local development server with hot reloading
+* `gulp build` to create a static build to the public folder
 * `npm run test` to lint the code
-* `npm run build` to create a static build to the public folder
 * `npm run deploy` to deploy the public folder using Surge
 
 ## Thoughts
 
-I've been building a pretty large and complex AngularJS app for more then a year now, 
-without using any module system, written in ES5 and using a pretty complicated Gulp
-setup. This was an exercise to see what a very simple app would look like in a more
-modern way.
- 
-It's a lot better then our current setup, I pretty much love it. The only thing I'm not 
-too sure of still is the webpack config, it's still a beast. Also compared to Deku and 
-React building the index.html file is a bit more complicated because of the tags needed
-for AngularJS, initial HTML, etc. I'm sure I could find a better way then the HtmlPlugin
-that's currently used.
+After using webpack for the last 3 experiments I really wanted to use browserify next. 
+I actually think that this has become way more complicated. Yes, the webpack config is
+comples, but this gulpfile and many more packages working together really isn't that 
+much better. You also loose some of the features, like CSS imports. Yes, this is
+possible with browserify, but I couldn't find out how to write the CSS into its own
+external file, instead it's always part of the JS bundle. This not not ideal (consider
+parallel loading of resources for example).
+
+In the end, I think webpack is the way to go, but I'd love to get feedback on how to
+simplify this setup and have the same features as well.

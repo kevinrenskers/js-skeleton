@@ -1,6 +1,5 @@
 const angular = require('angular');
 require('angular-ui-router');
-require('./assets/style.less');
 
 // Create the main app module
 const module = angular.module('app', [
