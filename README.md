@@ -7,13 +7,13 @@ renders its contents below it, and a separate page showing a very simple todo li
 have auto-reloading enabled in dev mode and produce minified ready-to-deploy producion builds with one
 command.
 
-## Current experiments
+## Finished experiments
 
-* [ampersand-react-webpack](https://github.com/kevinrenskers/js-skeleton/tree/ampersand-react-webpack) ([blog post](http://www.mixedcase.nl/articles/2015/05/17/research-front-end-part-1/))
-* [deku-cssnext-webpack](https://github.com/kevinrenskers/js-skeleton/tree/deku-cssnext-webpack) ([blog post](http://www.mixedcase.nl/articles/2015/05/31/research-front-end-part-2/))
-* [angularjs-webpack](https://github.com/kevinrenskers/js-skeleton/tree/angularjs-webpack)
+1. [ampersand-react-webpack](https://github.com/kevinrenskers/js-skeleton/tree/ampersand-react-webpack) ([blog post](http://www.mixedcase.nl/articles/2015/05/17/research-front-end-part-1/))
+2. [deku-cssnext-webpack](https://github.com/kevinrenskers/js-skeleton/tree/deku-cssnext-webpack) ([blog post](http://www.mixedcase.nl/articles/2015/05/31/research-front-end-part-2/))
+3. [angularjs-webpack](https://github.com/kevinrenskers/js-skeleton/tree/angularjs-webpack)
 
-## Going to look into 
+## Future experiments 
 
 * Gulp, [Browserify](http://browserify.org), [watchify](https://github.com/substack/watchify) and [babelify](https://github.com/babel/babelify) instead of webpack.
   Webpack has some nice features (hello requiring css!) and completely replaces a build system like Gulp, but its config is an eye sore.
