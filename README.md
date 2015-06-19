@@ -11,8 +11,8 @@ command.
 
 1. [ampersand-react-webpack](https://github.com/kevinrenskers/js-skeleton/tree/ampersand-react-webpack) ([blog post](http://www.mixedcase.nl/articles/2015/05/17/research-front-end-part-1/))
 2. [deku-cssnext-webpack](https://github.com/kevinrenskers/js-skeleton/tree/deku-cssnext-webpack) ([blog post](http://www.mixedcase.nl/articles/2015/05/31/research-front-end-part-2/))
-3. [angularjs-webpack](https://github.com/kevinrenskers/js-skeleton/tree/angularjs-webpack)
-4. [angularjs-browserify](https://github.com/kevinrenskers/js-skeleton/tree/angularjs-browserify)
+3. [angularjs-webpack](https://github.com/kevinrenskers/js-skeleton/tree/angularjs-webpack) ([blog post](http://www.mixedcase.nl/articles/2015/06/14/research-front-end-part-3/))
+4. [angularjs-browserify](https://github.com/kevinrenskers/js-skeleton/tree/angularjs-browserify) ([blog post](http://www.mixedcase.nl/articles/2015/06/14/research-front-end-part-3/))
 
 ## In progress
 
