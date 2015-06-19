@@ -14,10 +14,12 @@ command.
 3. [angularjs-webpack](https://github.com/kevinrenskers/js-skeleton/tree/angularjs-webpack)
 4. [angularjs-browserify](https://github.com/kevinrenskers/js-skeleton/tree/angularjs-browserify)
 
+## In progress
+
+* [riot-webpack](https://github.com/kevinrenskers/js-skeleton/tree/riot-webpack)
+
 ## Future experiments 
 
-* [Riot](https://muut.com/riotjs/). Uses a custom tags system. 
-  [Riotify](https://github.com/jhthorsen/riotify) for Browserify, or [riotjs-loader](https://github.com/esnunes/riotjs-loader) for webpack.
 * [Mithril](http://lhorie.github.io/mithril/). Uses JSX.
 * [Angular 2](https://angular.io).
 * [Aurelia](http://aurelia.io).
