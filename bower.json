@@ -1,0 +1,12 @@
+{
+  "name": "js-skeleton",
+  "version": "0.0.0",
+  "homepage": "https://github.com/kevinrenskers/js-skeleton",
+  "authors": [
+    "Kevin Renskers <info@mixedcase.nl>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "checklist-model": "~0.2.4"
+  }
+}

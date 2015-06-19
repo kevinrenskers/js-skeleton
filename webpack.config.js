@@ -44,7 +44,19 @@ config = {
     cssFilename: isDev ? 'bundle.css' : buildFilename(packageJson, useHash, 'css')
   },
 
+  resolve: {
+    modulesDirectories: ['bower_components', 'node_modules']
+  },
+
   plugins: [
+    new webpack.ResolverPlugin(
+      new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('package.json', ['main'])
+    ),
+
+    new webpack.ResolverPlugin(
+      new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('bower.json', ['main'])
+    ),
+
     new HtmlPlugin({
       html: function html(data) {
         return {
@@ -125,6 +137,9 @@ if (isDev) {
     }),
     new ExtractTextPlugin(config.output.cssFilename, {
       allChunks: true
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {NODE_ENV: JSON.stringify('production')}
     })
   );
 

@@ -1,10 +1,17 @@
 const angular = require('angular');
+global._ = require('underscore');
+
 require('angular-ui-router');
+require('restangular');
+require('checklist-model');
 require('./assets/style.less');
+
 
 // Create the main app module
 const module = angular.module('app', [
-  'ui.router'
+  'ui.router',
+  'restangular',
+  'checklist-model'
 ]);
 
 module.config(($urlRouterProvider, $locationProvider) => {
