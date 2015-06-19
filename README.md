@@ -3,8 +3,9 @@
 [![js-standard-style](https://img.shields.io/badge/code%20style-airbnb-blue.svg?style=flat)](https://github.com/airbnb/javascript)
 
 * Written using the [AirBnB code style](https://github.com/airbnb/javascript), checked with ESLint
+* Uses AngularJS 1.4
 * Uses [UI-Router](https://github.com/angular-ui/ui-router) for the router
-* Uses ES6 and JSX via [Babel](https://babeljs.io)
+* Uses ES6 via [Babel](https://babeljs.io)
 * Uses browserify, watchify, and gulp
 * Creates minified builds
 * Uses [Surge](https://surge.sh) to deploy the public folder 
