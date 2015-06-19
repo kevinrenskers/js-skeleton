@@ -24,4 +24,14 @@ to Webpack without introducing other changes (like cssnext, local css, etc).
 
 ## Thoughts
 
-Stay tuned...
+* Repeating items with the each attribute is a lot easier to me then React or Deku's
+  array map function to return HTML (via JSX)
+* Scoped (local) CSS is supported directly by Riot itself. It works pretty great but
+  it skips all the great webpack features because you're not using their loaders:
+  extract the CSS to a external stylesheet, autoprefixer, etc.
+* It depends on the ProvidePlugin to make Riot globally available, as the .tag files
+  compile down to JS that uses `riot.tag`. Not ideal.
+* With React and Deku you have JS code that includes (generates) HTML code. 
+  With Riot you have HTML (the .tag file) that includes JS. Check 
+  [The fundamental difference between Riot and React](http://blog.srackham.com/posts/riot-es6-webpack-apps/)
+  for more info. This is the main cause of the previous point.

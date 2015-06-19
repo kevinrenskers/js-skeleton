@@ -18,6 +18,10 @@
     h3 {
       color: purple;
     }
+
+    .completed {
+      text-decoration: line-through;
+    }
   </style>
 
   <script>
