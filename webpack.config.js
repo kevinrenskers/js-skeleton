@@ -30,7 +30,7 @@ function buildFilename(pack, hash, ext) {
 
 function getHtml(data) {
   return data.defaultTemplate({
-    html: '<div ui-view></div>',
+    title: 'Hello Riot!',
     base: '/'
   });
 }
@@ -44,18 +44,10 @@ config = {
     cssFilename: isDev ? 'bundle.css' : buildFilename(packageJson, useHash, 'css')
   },
 
-  resolve: {
-    modulesDirectories: ['bower_components', 'node_modules']
-  },
-
   plugins: [
-    new webpack.ResolverPlugin(
-      new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('package.json', ['main'])
-    ),
-
-    new webpack.ResolverPlugin(
-      new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('bower.json', ['main'])
-    ),
+    new webpack.ProvidePlugin({
+      riot: 'riot'
+    }),
 
     new HtmlPlugin({
       html: function html(data) {
@@ -68,16 +60,18 @@ config = {
   ],
 
   module: {
+    preLoaders: [
+      {
+        test: /\.tag$/,
+        exclude: /node_modules/,
+        loaders: ['riotjs-loader']
+      }
+    ],
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.js|\.tag$/,
         exclude: /node_modules/,
-        loaders: ['ng-annotate', 'babel']
-      },
-      {
-        test: /\.html$/,
-        exclude: /node_modules/,
-        loaders: ['raw']
+        loaders: ['babel']
       }
     ]
   },
@@ -110,10 +104,6 @@ if (isDev) {
     {
       test: /\.css$/,
       loaders: ['style', 'css?sourceMap']
-    },
-    {
-      test: /\.less$/,
-      loaders: ['style', 'css?sourceMap', 'less?sourceMap']
     }
   );
 } else {
@@ -148,10 +138,6 @@ if (isDev) {
     {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract('style', 'css!postcss')
-    },
-    {
-      test: /\.less/,
-      loader: ExtractTextPlugin.extract('style', 'css!postcss!less')
     }
   );
 }
