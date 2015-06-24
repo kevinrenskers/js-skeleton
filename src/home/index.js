@@ -6,9 +6,7 @@ module.exports = (appModule) => {
       url: '/',
       template: require('./home.html'),
       controllerAs: 'vm',
-      controller: (Restangular) => {
-        console.log(Restangular);
-      }
+      controller: require('./HomeController')
     });
   });
 };

@@ -4,7 +4,9 @@ module.exports = (appModule) => {
   appModule.config($stateProvider => {
     $stateProvider.state('page', {
       url: '/page',
-      template: require('./page.html')
+      template: require('./page.html'),
+      controllerAs: 'vm',
+      controller: require('./PageController')
     });
   });
 };

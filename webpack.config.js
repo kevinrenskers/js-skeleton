@@ -71,12 +71,12 @@ config = {
     loaders: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /node_modules|bower_components/,
         loaders: ['ng-annotate', 'babel']
       },
       {
         test: /\.html$/,
-        exclude: /node_modules/,
+        exclude: /node_modules|bower_components/,
         loaders: ['raw']
       }
     ]
