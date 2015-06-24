@@ -6,9 +6,7 @@ module.exports = class HomeController {
 
   click() {
     this.Restangular.all('/users/kevinrenskers/repos').getList().then((data) => {
-      console.log(data.map(x => {
-        return x.name;
-      }));
+      console.log(data.map(x => x.name));
     });
   };
 };
