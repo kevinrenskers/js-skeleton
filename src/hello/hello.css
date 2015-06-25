@@ -1,3 +1,6 @@
+/*@custom-selector --h h1 h2 - uncomment to test warnings*/
+/*:fullscreen a {} - uncomment to test autoprefixer*/
+
 hello {
   h3 {
     color: orange;

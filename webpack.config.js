@@ -7,8 +7,6 @@ var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlPlugin = require('./lib/html-plugin');
 var packageJson = require('./package.json');
-var cssnext = require('cssnext');
-var postcssNested = require('postcss-nested');
 
 // figure out if we're running `webpack` or `webpack-dev-server`
 // we'll use this as the default for `isDev`
@@ -77,10 +75,12 @@ config = {
     ]
   },
 
-  postcss: [
-    cssnext(),
-    postcssNested()
-  ]
+  cssnext: {
+    browsers: 'last 2 versions',
+    plugins: [
+      require('postcss-nested')
+    ]
+  }
 };
 
 if (isDev) {
@@ -107,7 +107,7 @@ if (isDev) {
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loaders: ['style', 'css?sourceMap', 'postcss']
+      loaders: ['style', 'css?sourceMap', 'cssnext']
     }
   );
 } else {
@@ -141,7 +141,7 @@ if (isDev) {
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract('style', 'css!postcss')
+      loader: ExtractTextPlugin.extract('style', 'css!cssnext')
     }
   );
 }
