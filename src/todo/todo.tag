@@ -1,3 +1,5 @@
+require('./todo.css');
+
 <todo>
   <h3>{ opts.title }</h3>
 
@@ -13,16 +15,6 @@
     <input name="input" onkeyup={ edit }>
     <button disabled={ !text }>Add #{ items.length + 1 }</button>
   </form>
-
-  <style scoped>
-    h3 {
-      color: purple;
-    }
-
-    .completed {
-      text-decoration: line-through;
-    }
-  </style>
 
   <script>
     this.disabled = true;

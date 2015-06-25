@@ -6,8 +6,9 @@ var rimraf = require('rimraf');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlPlugin = require('./lib/html-plugin');
-var autoPrefixer = require('autoprefixer-core');
 var packageJson = require('./package.json');
+var cssnext = require('cssnext');
+var postcssNested = require('postcss-nested');
 
 // figure out if we're running `webpack` or `webpack-dev-server`
 // we'll use this as the default for `isDev`
@@ -76,7 +77,10 @@ config = {
     ]
   },
 
-  postcss: [autoPrefixer()]
+  postcss: [
+    cssnext(),
+    postcssNested()
+  ]
 };
 
 if (isDev) {
@@ -103,7 +107,7 @@ if (isDev) {
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loaders: ['style', 'css?sourceMap']
+      loaders: ['style', 'css?sourceMap', 'postcss']
     }
   );
 } else {

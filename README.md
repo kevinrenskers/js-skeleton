@@ -29,7 +29,9 @@ to Webpack without introducing other changes (like cssnext, local css, etc).
 * Scoped (local) CSS is supported directly by Riot itself. It works pretty great but
   it skips all the great webpack features because you're not using their loaders:
   extract the CSS to a external stylesheet, autoprefixer, etc.
-* It depends on the ProvidePlugin to make Riot globally available, as the .tag files
+* Using css-loader with CSS Modules didn't work properly with Riot, [see issue](https://github.com/riot/riot/issues/873).
+* The easiest way to use cssnext with Riot and have "scoped" CSS was to use postcss-nested.
+* Riot with webpack depends on the ProvidePlugin to make Riot globally available, as the .tag files
   compile down to JS that uses `riot.tag`. Not ideal.
 * With React and Deku you have JS code that includes (generates) HTML code. 
   With Riot you have HTML (the .tag file) that includes JS. Check 

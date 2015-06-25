@@ -1,5 +1,5 @@
-require('./hello.tag');
-require('./todo.tag');
+require('./hello/hello.tag');
+require('./todo/todo.tag');
 
 <app>
   <hello></hello>
