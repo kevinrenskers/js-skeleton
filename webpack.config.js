@@ -107,7 +107,7 @@ if (isDev) {
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loaders: ['style', 'css?sourceMap', 'cssnext']
+      loaders: ['style', 'css?sourceMap', 'cssnext?sourceMap']
     }
   );
 } else {
