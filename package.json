@@ -19,16 +19,16 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "babel": "^5.5.8",
-    "babel-core": "^5.4.7",
-    "babel-eslint": "^3.1.14",
-    "babel-loader": "^5.1.4",
-    "css-loader": "^0.14.4",
-    "cssnext": "^1.6.0",
+    "babel": "^5.6.14",
+    "babel-core": "^5.6.15",
+    "babel-eslint": "^3.1.19",
+    "babel-loader": "^5.2.2",
+    "css-loader": "^0.15.1",
+    "cssnext": "^1.7.1",
     "cssnext-loader": "^1.0.1",
     "deku": "^0.4.5",
-    "eslint": "^0.21.2",
-    "eslint-plugin-react": "^2.5.1",
+    "eslint": "^0.24.0",
+    "eslint-plugin-react": "^2.5.2",
     "extract-text-webpack-plugin": "^0.8.1",
     "file-loader": "^0.8.4",
     "find-root": "^0.1.1",
@@ -37,8 +37,8 @@
     "page": "^1.6.3",
     "rimraf": "^2.4.0",
     "style-loader": "^0.12.3",
-    "surge": "^0.12.0",
-    "webpack": "^1.9.10",
-    "webpack-dev-server": "^1.9.0"
+    "surge": "^0.14.2",
+    "webpack": "^1.10.0",
+    "webpack-dev-server": "^1.10.0"
   }
 }

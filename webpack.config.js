@@ -27,21 +27,27 @@ function buildFilename(pack, hash, ext) {
   return [pack.name, middle, (ext || 'js')].join('.');
 }
 
+function getHtml(data) {
+  return data.defaultTemplate({
+    html: '<div id="content"></div>',
+  });
+}
+
 config = {
   entry: ['./src/app'],
 
   output: {
     path: path.join(__dirname, 'public'),
-    filename: isDev ? 'app.js' : buildFilename(packageJson, useHash, 'js'),
-    cssFilename: isDev ? 'app.css' : buildFilename(packageJson, useHash, 'css')
+    filename: isDev ? 'bundle.js' : buildFilename(packageJson, useHash, 'js'),
+    cssFilename: isDev ? 'bundle.css' : buildFilename(packageJson, useHash, 'css')
   },
 
   plugins: [
     new HtmlPlugin({
-      html: function(data) {
+      html: function html(data) {
         return {
-          '200.html': data.defaultTemplate(),
-          'index.html': data.defaultTemplate()
+          'index.html': getHtml(data),
+          '200.html': getHtml(data)
         };
       }
     })
@@ -51,7 +57,7 @@ config = {
     loaders: [
       {
         test: /(\.js$)|(\.jsx$)/,
-        include: path.join(__dirname, 'src'),
+        exclude: /node_modules/,
         loaders: ['babel']
       }
     ]
@@ -59,11 +65,8 @@ config = {
 };
 
 if (isDev) {
-  config.devtool = 'eval';
-
   config.devServer = {
     port: 3000,
-    info: false,
     historyApiFallback: true,
     host: 'localhost',
     hot: true
@@ -76,13 +79,17 @@ if (isDev) {
 
   config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.SourceMapDevToolPlugin(
+      '[file].map', null,
+      '[absolute-resource-path]', '[absolute-resource-path]'
+    )
   );
 
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loaders: ['style', 'css?module&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'cssnext']
+      loaders: ['style', 'css?sourceMap&module&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'cssnext?sourceMap']
     }
   );
 

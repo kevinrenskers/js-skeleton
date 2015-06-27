@@ -5,7 +5,7 @@ import HomePage from './pages/home';
 import TodoPage from './pages/todo';
 
 let app = tree();
-render(app, document.body);
+render(app, document.getElementById('content'));
 
 page('/', () => {
   app.mount(<HomePage/>);
