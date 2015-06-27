@@ -14,7 +14,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "babel-core": "^5.5.6",
+    "babel-core": "^5.6.15",
     "babel-eslint": "^3.1.17",
     "babel-loader": "^5.1.4",
     "css-loader": "^0.15.1",
@@ -31,7 +31,7 @@
     "style-loader": "^0.12.3",
     "surge": "^0.14.1",
     "underscore": "^1.8.3",
-    "webpack": "^1.9.10",
-    "webpack-dev-server": "^1.9.0"
+    "webpack": "^1.10.0",
+    "webpack-dev-server": "^1.10.0"
   }
 }

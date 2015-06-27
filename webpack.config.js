@@ -63,7 +63,7 @@ config = {
       {
         test: /\.tag$/,
         exclude: /node_modules/,
-        loaders: ['riotjs-loader']
+        loaders: ['riotjs']
       }
     ],
     loaders: [
@@ -84,11 +84,8 @@ config = {
 };
 
 if (isDev) {
-  config.devtool = 'eval';
-
   config.devServer = {
     port: 3000,
-    info: false,
     historyApiFallback: true,
     host: 'localhost',
     hot: true
@@ -101,7 +98,11 @@ if (isDev) {
 
   config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.SourceMapDevToolPlugin(
+      '[file].map', null,
+      '[absolute-resource-path]', '[absolute-resource-path]'
+    )
   );
 
   config.module.loaders.push(
