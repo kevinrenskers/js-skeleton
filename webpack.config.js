@@ -92,8 +92,6 @@ if (isDev) {
       loaders: ['style', 'css?sourceMap&module&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]', 'cssnext?sourceMap']
     }
   );
-
-  config.cssnext = {};
 } else {
   // clear out output folder if so configured
   if (clearBeforeBuild) {
@@ -115,6 +113,9 @@ if (isDev) {
     }),
     new ExtractTextPlugin(config.output.cssFilename, {
       allChunks: true
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {NODE_ENV: JSON.stringify('production')}
     })
   );
 
@@ -125,10 +126,6 @@ if (isDev) {
       loader: ExtractTextPlugin.extract('style', 'css?module&importLoaders=1&localIdentName=[hash:base64]!cssnext')
     }
   );
-
-  config.cssnext = {
-    compress: true
-  };
 }
 
 module.exports = config;
