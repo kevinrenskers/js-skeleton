@@ -27,6 +27,11 @@ function buildFilename(pack, hash, ext) {
   return [pack.name, middle, (ext || 'js')].join('.');
 }
 
+var minifyOptions = {
+  removeComments: true,
+  collapseWhitespace: true
+};
+
 config = {
   context: path.join(__dirname, 'src'),
   entry: ['./index.js'],
@@ -41,8 +46,8 @@ config = {
       riot: 'riot'
     }),
 
-    new HtmlWebpackPlugin({title: 'Hello Riot!'}),
-    new HtmlWebpackPlugin({title: 'Hello Riot!', filename: '200.html'})
+    new HtmlWebpackPlugin({title: 'Hello Riot!', minify: minifyOptions}),
+    new HtmlWebpackPlugin({title: 'Hello Riot!', minify: minifyOptions, filename: '200.html'})
   ],
 
   module: {
