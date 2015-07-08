@@ -9,7 +9,7 @@ var cssvars = require('postcss-custom-properties');
 var cssimport = require('postcss-import');
 var cssmerge = require('postcss-merge-rules');
 var nested = require('postcss-nested');
-var HtmlPlugin = require('./lib/html-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var packageJson = require('./package.json');
 
@@ -20,6 +20,11 @@ var isDev = process.argv[1].indexOf('webpack-dev-server') !== -1;
 var useHash = false;
 var clearBeforeBuild = true;
 var config;
+
+var minifyOptions = {
+  removeComments: true,
+  collapseWhitespace: true
+};
 
 function buildFilename(pack, hash, ext) {
   var middle;
@@ -46,14 +51,8 @@ config = {
   },
 
   plugins: [
-    new HtmlPlugin({
-      html: function(data) {
-        return {
-          '200.html': data.defaultTemplate(),
-          'index.html': data.defaultTemplate()
-        };
-      }
-    })
+    new HtmlWebpackPlugin({title: 'Hello React!', minify: minifyOptions}),
+    new HtmlWebpackPlugin({title: 'Hello React!', minify: minifyOptions, filename: '200.html'})
   ],
 
   module: {
