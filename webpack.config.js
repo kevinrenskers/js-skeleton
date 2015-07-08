@@ -5,7 +5,7 @@ var path = require('path');
 var rimraf = require('rimraf');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlPlugin = require('./lib/html-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var packageJson = require('./package.json');
 
 // figure out if we're running `webpack` or `webpack-dev-server`
@@ -27,13 +27,6 @@ function buildFilename(pack, hash, ext) {
   return [pack.name, middle, (ext || 'js')].join('.');
 }
 
-function getHtml(data) {
-  return data.defaultTemplate({
-    title: 'Hello Riot!',
-    base: '/'
-  });
-}
-
 config = {
   context: path.join(__dirname, 'src'),
   entry: ['./index.js'],
@@ -48,14 +41,8 @@ config = {
       riot: 'riot'
     }),
 
-    new HtmlPlugin({
-      html: function html(data) {
-        return {
-          'index.html': getHtml(data),
-          '200.html': getHtml(data)
-        };
-      }
-    })
+    new HtmlWebpackPlugin({title: 'Hello Riot!'}),
+    new HtmlWebpackPlugin({title: 'Hello Riot!', filename: '200.html'})
   ],
 
   module: {
