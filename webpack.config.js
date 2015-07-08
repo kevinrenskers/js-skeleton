@@ -16,6 +16,11 @@ var useHash = false;
 var clearBeforeBuild = true;
 var config;
 
+var minifyOptions = {
+  removeComments: true,
+  collapseWhitespace: true
+};
+
 function buildFilename(pack, hash, ext) {
   var middle;
   if (hash) {
@@ -26,11 +31,6 @@ function buildFilename(pack, hash, ext) {
 
   return [pack.name, middle, (ext || 'js')].join('.');
 }
-
-var minifyOptions = {
-  removeComments: true,
-  collapseWhitespace: true
-};
 
 config = {
   context: path.join(__dirname, 'src'),
