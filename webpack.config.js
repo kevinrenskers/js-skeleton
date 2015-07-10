@@ -1,7 +1,9 @@
 /*eslint no-var:0 */
 
+var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
+var rimraf = require('rimraf');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var packageJson = require('./package.json');
@@ -49,7 +51,7 @@ config = {
       {
         test: /(\.js$)|(\.jsx$)/,
         exclude: /node_modules/,
-        loaders: ['babel']
+        loaders: ['react-hot', 'babel']
       }
     ]
   }

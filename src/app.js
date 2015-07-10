@@ -1,10 +1,8 @@
-require('./styles/main.css');
-var React = require('react');
+import React from 'react';
+import HelloMessage from './HelloMessage';
+import './styles/main.css';
 
-var HelloMessage = React.createClass({
-  render: function() {
-    return <div>Hello {this.props.name}</div>;
-  }
-});
-
-React.render(<HelloMessage name="John" />, document.body);
+React.render(
+  <HelloMessage />,
+  document.body
+);
