@@ -1,5 +1,6 @@
 /*eslint no-var:0 */
 
+var fs = require('fs');
 var path = require('path');
 var webpack = require('webpack');
 var rimraf = require('rimraf');
