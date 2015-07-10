@@ -2,13 +2,6 @@
 
 var path = require('path');
 var webpack = require('webpack');
-var autoprefixer = require('autoprefixer-core');
-var mqpacker = require('css-mqpacker');
-var csswring = require('csswring');
-var cssvars = require('postcss-custom-properties');
-var cssimport = require('postcss-import');
-var cssmerge = require('postcss-merge-rules');
-var nested = require('postcss-nested');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var packageJson = require('./package.json');
@@ -46,13 +39,9 @@ config = {
     cssFilename: isDev ? 'bundle.css' : buildFilename(packageJson, useHash, 'css')
   },
 
-  resolve: {
-    extensions: ['', '.js', '.json']
-  },
-
   plugins: [
-    new HtmlWebpackPlugin({title: 'Hello React!', minify: minifyOptions}),
-    new HtmlWebpackPlugin({title: 'Hello React!', minify: minifyOptions, filename: '200.html'})
+    new HtmlWebpackPlugin({title: 'Hello React & Redux!', minify: minifyOptions}),
+    new HtmlWebpackPlugin({title: 'Hello React & Redux!', minify: minifyOptions, filename: '200.html'})
   ],
 
   module: {
@@ -61,14 +50,6 @@ config = {
         test: /(\.js$)|(\.jsx$)/,
         exclude: /node_modules/,
         loaders: ['babel']
-      },
-      {
-        test: /\.json$/,
-        loaders: ['json']
-      },
-      {
-        test: /\.(otf|eot|svg|ttf|woff)/,
-        loader: 'url?limit=10000'
       }
     ]
   }
@@ -101,16 +82,9 @@ if (isDev) {
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loaders: ['style', 'css?sourceMap', 'postcss?sourceMap']
+      loaders: ['style', 'css?sourceMap', 'cssnext?sourceMap']
     }
   );
-
-  config.postcss = [
-    cssimport(),
-    nested(),
-    cssvars(),
-    autoprefixer({browsers: ['last 2 versions']})
-  ];
 } else {
   // clear out output folder if so configured
   if (clearBeforeBuild) {
@@ -130,9 +104,11 @@ if (isDev) {
       },
       sourceMap: false
     }),
+
     new ExtractTextPlugin(config.output.cssFilename, {
       allChunks: true
     }),
+
     new webpack.DefinePlugin({
       'process.env': {NODE_ENV: JSON.stringify('production')}
     })
@@ -142,19 +118,9 @@ if (isDev) {
   config.module.loaders.push(
     {
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract('style', 'css!postcss')
+      loader: ExtractTextPlugin.extract('style', 'css!cssnext')
     }
   );
-
-  config.postcss = [
-    cssimport(),
-    nested(),
-    cssvars(),
-    cssmerge(),
-    autoprefixer({browsers: ['last 2 versions']}),
-    mqpacker(),
-    csswring()
-  ];
 }
 
 module.exports = config;

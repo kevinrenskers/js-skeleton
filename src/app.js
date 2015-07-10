@@ -1,12 +1,10 @@
-import app from 'ampersand-app';
-import Router from './router';
-import './styles/main.css';
+require('./styles/main.css');
+var React = require('react');
 
-window.app = app.extend({
-  init() {
-    this.router = new Router();
-    this.router.history.start({ pushState: true });
+var HelloMessage = React.createClass({
+  render: function() {
+    return <div>Hello {this.props.name}</div>;
   }
 });
 
-app.init();
+React.render(<HelloMessage name="John" />, document.body);
