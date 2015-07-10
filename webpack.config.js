@@ -2,6 +2,7 @@
 
 var path = require('path');
 var webpack = require('webpack');
+var rimraf = require('rimraf');
 var autoprefixer = require('autoprefixer-core');
 var mqpacker = require('css-mqpacker');
 var csswring = require('csswring');
