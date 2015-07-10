@@ -24,10 +24,12 @@ export default class HelloMessage extends React.Component {
   }
 
   render() {
+    const {counter} = this.state;
+    const color = counter % 2 ? 'red' : 'black';
+
     return (
-      <div>
-        Hello {this.state.counter}
-        <input type="text" />
+      <div style={{color}}>
+        Hello {counter}!
       </div>
     );
   }
