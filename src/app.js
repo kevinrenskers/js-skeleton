@@ -1,9 +1,11 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
+const {Router} = require('react-router');
+const {history} = require('react-router/lib/HashHistory');
 const Redux = require('redux');
-const Provider = require('redux/react').Provider;
+const {Provider} = require('redux/react');
 const reducers = require('./reducers');
-const TodosApp = require('./todos/TodosApp');
+const routes = require('./routes');
 
 const store = Redux.createStore(reducers);
 
@@ -11,7 +13,9 @@ class App {
   render() {
     return (
       <Provider store={store}>
-        {() => <TodosApp />}
+        {() =>
+          <Router children={routes()} history={history}/>
+        }
       </Provider>
     );
   }
