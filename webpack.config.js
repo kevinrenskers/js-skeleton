@@ -7,6 +7,7 @@ var rimraf = require('rimraf');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var packageJson = require('./package.json');
+var assign = require('lodash.assign');
 
 // figure out if we're running `webpack` or `webpack-dev-server`
 // we'll use this as the default for `isDev`
@@ -16,9 +17,14 @@ var useHash = false;
 var clearBeforeBuild = true;
 var config;
 
-var minifyOptions = {
-  removeComments: true,
-  collapseWhitespace: true
+var htmlOptions = {
+  template: 'node_modules/html-webpack-template/index.html',
+  title: 'Hello React & Redux!',
+  appMountId: 'app',
+  minify: {
+    removeComments: true,
+    collapseWhitespace: true
+  }
 };
 
 function buildFilename(pack, hash, ext) {
@@ -42,8 +48,8 @@ config = {
   },
 
   plugins: [
-    new HtmlWebpackPlugin({title: 'Hello React & Redux!', minify: minifyOptions}),
-    new HtmlWebpackPlugin({title: 'Hello React & Redux!', minify: minifyOptions, filename: '200.html'})
+    new HtmlWebpackPlugin(htmlOptions),
+    new HtmlWebpackPlugin(assign({}, htmlOptions, {filename: '200.html'}))
   ],
 
   module: {

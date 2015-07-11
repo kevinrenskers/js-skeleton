@@ -1,4 +1,5 @@
 const React = require('react');
+const ReactDOM = require('react-dom');
 const Redux = require('redux');
 const Provider = require('redux/react').Provider;
 const reducers = require('./reducers');
@@ -16,4 +17,4 @@ class App {
   }
 }
 
-React.render(<App/>, document.body);
+ReactDOM.render(<App/>, document.getElementById('app'));
