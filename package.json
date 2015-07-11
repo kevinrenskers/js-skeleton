@@ -41,6 +41,7 @@
     "react": "^0.14.0-beta1",
     "react-dom": "^0.14.0-beta1",
     "react-hot-loader": "^1.2.8",
+    "react-router": "^1.0.0-beta3",
     "redux": "^1.0.0-alpha"
   }
 }
