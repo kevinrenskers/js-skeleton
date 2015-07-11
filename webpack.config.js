@@ -53,13 +53,7 @@ config = {
   ],
 
   module: {
-    loaders: [
-      {
-        test: /(\.js$)|(\.jsx$)/,
-        exclude: /node_modules/,
-        loaders: ['babel']
-      }
-    ]
+    loaders: []
   }
 };
 
@@ -85,9 +79,12 @@ if (isDev) {
     )
   );
 
-  config.module.loaders[0].loaders.unshift('react-hot');
-
   config.module.loaders.push(
+    {
+      test: /(\.js$)|(\.jsx$)/,
+      exclude: /node_modules/,
+      loaders: ['react-hot', 'babel']
+    },
     {
       test: /\.css$/,
       loaders: ['style', 'css?sourceMap', 'cssnext?sourceMap']
@@ -122,8 +119,12 @@ if (isDev) {
     })
   );
 
-  // extract in production
   config.module.loaders.push(
+    {
+      test: /(\.js$)|(\.jsx$)/,
+      exclude: /node_modules/,
+      loaders: ['babel?optional[]=optimisation.react.inlineElements']
+    },
     {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract('style', 'css!cssnext')

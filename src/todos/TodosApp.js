@@ -8,6 +8,10 @@ const actions = require('./actions');
   return {todos: state.todos};
 })
 export default class {
+  static propTypes = {
+    dispatch: React.PropTypes.func.isRequired
+  };
+
   render() {
     const { dispatch, ...state } = this.props;
     return <Todos {...state} {...Redux.bindActionCreators(actions, dispatch)} />;
