@@ -1,16 +1,16 @@
-import React from 'react';
-import { createStore } from 'redux';
-import { Provider } from 'redux/react';
-import * as stores from './stores';
-import Todos from './Todos';
+const React = require('react');
+const Redux = require('redux');
+const Provider = require('redux/react').Provider;
+const reducers = require('./reducers');
+const TodosApp = require('./todos/TodosApp');
 
-const store = createStore(stores);
+const store = Redux.createStore(reducers);
 
 class App {
   render() {
     return (
       <Provider store={store}>
-        {() => <Todos/>}
+        {() => <TodosApp />}
       </Provider>
     );
   }

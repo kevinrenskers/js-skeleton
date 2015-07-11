@@ -51,7 +51,7 @@ config = {
       {
         test: /(\.js$)|(\.jsx$)/,
         exclude: /node_modules/,
-        loaders: ['babel?stage=0']
+        loaders: ['babel']
       }
     ]
   }

@@ -1,6 +1,6 @@
-import * as constants from './constants'
+const constants = require('./constants');
 
-export function todos(state = [], action) {
+module.exports = function(state = [], action) {
   switch (action.type) {
     case constants.ADD_TODO:
       return [action.text, ...state];
@@ -8,4 +8,4 @@ export function todos(state = [], action) {
     default:
       return state;
   }
-}
+};

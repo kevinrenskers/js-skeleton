@@ -1,15 +1,13 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'redux/react';
-import * as actions from './actions';
+const React = require('react');
 
-@connect(state => state)
-export default class Todos extends React.Component {
+class Todos extends React.Component {
   static propTypes = {
-    todos: PropTypes.array.isRequired
+    addTodo: React.PropTypes.func.isRequired,
+    todos: React.PropTypes.array.isRequired
   };
 
   addNewTodo = () => {
-    this.props.dispatch(actions.addTodo('TEST'));
+    this.props.addTodo('TEST');
   };
 
   render() {
@@ -26,3 +24,5 @@ export default class Todos extends React.Component {
     );
   }
 }
+
+module.exports = Todos;

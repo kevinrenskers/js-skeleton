@@ -11,6 +11,7 @@ The ultimate React stack.
 * cssnext
 
 * https://www.youtube.com/watch?v=xsSnOQynTHs
+* https://github.com/ernieturner/webpack-redux-boilerplate
 
 Deployed to http://react-redux.surge.sh.
 
