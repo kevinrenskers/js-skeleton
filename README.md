@@ -17,6 +17,7 @@ command.
 ## In progress
 
 * [riot-webpack](https://github.com/kevinrenskers/js-skeleton/tree/riot-webpack)
+* [react-redux](https://github.com/kevinrenskers/js-skeleton/tree/react-redux)
 
 ## Future experiments 
 
@@ -24,10 +25,3 @@ command.
 * [Angular 2](https://angular.io).
 * [Aurelia](http://aurelia.io).
 * [Cycle](https://github.com/staltz/cycle). Uses JSX. Fully reactive and functional.
-
-## Credits
-
-* https://github.com/HenrikJoreteg/hjs-webpack
-* http://learn.humanjavascript.com/react-ampersand
-* https://muut.com/riotjs/compare.html
-* https://egghead.io/playlists/learning-riotjs
