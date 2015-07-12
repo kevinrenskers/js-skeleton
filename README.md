@@ -17,7 +17,7 @@ command.
 ## In progress
 
 * [riot-webpack](https://github.com/kevinrenskers/js-skeleton/tree/riot-webpack)
-* [react-redux](https://github.com/kevinrenskers/js-skeleton/tree/react-redux)
+* [react-redux-webpack](https://github.com/kevinrenskers/js-skeleton/tree/react-redux-webpack)
 
 ## Future experiments 
 
