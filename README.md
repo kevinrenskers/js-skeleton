@@ -1,4 +1,4 @@
-# JavaScript SPA skeleton - react-redux
+# JavaScript SPA skeleton - react-redux-webpack
 
 [![js-standard-style](https://img.shields.io/badge/code%20style-airbnb-blue.svg?style=flat)](https://github.com/airbnb/javascript)
 
@@ -13,7 +13,7 @@ The ultimate React stack.
 * https://www.youtube.com/watch?v=xsSnOQynTHs
 * https://github.com/ernieturner/webpack-redux-boilerplate
 
-Deployed to http://react-redux.surge.sh.
+Deployed to http://react-redux-webpack.surge.sh.
 
 ## Usage
 

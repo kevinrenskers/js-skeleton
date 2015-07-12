@@ -12,14 +12,14 @@
     "build": "webpack",
     "start": "webpack-dev-server",
     "test": "eslint src",
-    "deploy": "surge -p public -d reaxt-redux.surge.sh",
+    "deploy": "surge -p public -d reaxt-redux-webpack.surge.sh",
     "yolo": "npm run test && npm version minor && git push origin master --tags && npm run build && npm run deploy"
   },
   "author": "Kevin Renskers <kevin@mixedcase.nl>",
   "private": true,
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^5.6.17",
+    "babel-core": "^5.6.18",
     "babel-eslint": "^3.1.23",
     "babel-loader": "^5.3.1",
     "css-loader": "^0.15.2",
