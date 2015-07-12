@@ -1,6 +1,20 @@
 {
   "stage": 0,
   "optional": [
+    "runtime",
     "optimisation.react.constantElements"
-  ]
+  ],
+  "loose": [
+    "es6.modules",
+    "es6.classes"
+  ],
+  "env": {
+    "production": {
+      "optional": [
+        "runtime",
+        "optimisation.react.constantElements",
+        "optimisation.react.inlineElements"
+      ]
+    }
+  }
 }

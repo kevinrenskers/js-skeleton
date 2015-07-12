@@ -123,7 +123,7 @@ if (isDev) {
     {
       test: /(\.js$)|(\.jsx$)/,
       exclude: /node_modules/,
-      loaders: ['babel?optional[]=optimisation.react.inlineElements']
+      loaders: ['babel']
     },
     {
       test: /\.css$/,
