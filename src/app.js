@@ -1,4 +1,5 @@
 const React = require('react');
+const ReactDOM = require('react-dom');
 const {Router} = require('react-router');
 const {history} = require('react-router/lib/HashHistory');
 const Redux = require('redux');
@@ -21,4 +22,4 @@ class App {
   }
 }
 
-React.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<App/>, document.getElementById('app'));
