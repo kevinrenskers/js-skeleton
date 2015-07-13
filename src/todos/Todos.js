@@ -1,13 +1,18 @@
 const React = require('react');
+const ReduxReact = require('react-redux');
+const actions = require('./actions');
 
+@ReduxReact.connect(state => {
+  return {todos: state.todos};
+})
 class Todos extends React.Component {
   static propTypes = {
-    addTodo: React.PropTypes.func.isRequired,
+    dispatch: React.PropTypes.func.isRequired,
     todos: React.PropTypes.array.isRequired
   };
 
   addNewTodo = () => {
-    this.props.addTodo('TEST');
+    this.props.dispatch(actions.addTodo('TEST'));
   };
 
   render() {
