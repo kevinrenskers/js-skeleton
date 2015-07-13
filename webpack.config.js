@@ -9,10 +9,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var packageJson = require('./package.json');
 var assign = require('lodash.assign');
 
-// figure out if we're running `webpack` or `webpack-dev-server`
-// we'll use this as the default for `isDev`
-var isDev = process.argv[1].indexOf('webpack-dev-server') !== -1;
-
+var isDev = process.env.NODE_ENV !== 'production';
 var useHash = false;
 var clearBeforeBuild = true;
 var config;

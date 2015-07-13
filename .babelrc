@@ -11,9 +11,8 @@
   "env": {
     "production": {
       "optional": [
-        "runtime",
-        "optimisation.react.constantElements",
-        "optimisation.react.inlineElements"
+        "optimisation.react.inlineElements",
+        "minification.removeConsole"
       ]
     }
   }

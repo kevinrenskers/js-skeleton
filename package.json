@@ -9,7 +9,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "NODE_ENV=production webpack",
     "start": "webpack-dev-server",
     "test": "eslint src",
     "deploy": "surge -p public -d reaxt-redux-webpack.surge.sh",
