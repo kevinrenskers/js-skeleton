@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/kevinrenskers/js-skeleton"
   },
-  "main": "index.js",
+  "main": "src/app.js",
   "scripts": {
     "build": "NODE_ENV=production webpack",
     "start": "webpack-dev-server",
