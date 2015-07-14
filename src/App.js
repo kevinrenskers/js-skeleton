@@ -1,8 +1,6 @@
 const React = require('react');
 const {Link} = require('react-router/lib/Link');
 
-console.log(Link);
-
 class Main extends React.Component {
   render() {
     return (

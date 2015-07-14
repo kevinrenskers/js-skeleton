@@ -46,7 +46,10 @@ config = {
 
   plugins: [
     new HtmlWebpackPlugin(htmlOptions),
-    new HtmlWebpackPlugin(assign({}, htmlOptions, {filename: '200.html'}))
+    new HtmlWebpackPlugin(assign({}, htmlOptions, {filename: '200.html'})),
+    new webpack.DefinePlugin({
+      __DEVTOOLS__: isDev
+    }),
   ],
 
   module: {

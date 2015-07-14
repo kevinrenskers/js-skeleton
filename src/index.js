@@ -4,38 +4,46 @@ const {Router} = require('react-router');
 const {history} = require('react-router/lib/BrowserHistory');
 const {createStore, applyMiddleware, combineReducers, compose} = require('redux');
 const {Provider} = require('react-redux');
-const {devTools, persistState} = require('redux-devtools');
-const {DevTools, DebugPanel, LogMonitor} = require('redux-devtools/lib/react');
 const thunk = require('redux-thunk');
 const reducers = require('./reducers');
 const routes = require('./routes');
 require('./styles/main.css');
 
-const finalCreateStore = compose(
-  applyMiddleware(thunk),
-  devTools(),
-  persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
-  createStore
-);
+let finalCreateStore;
+
+if (__DEVTOOLS__) {
+  const {devTools, persistState} = require('redux-devtools');
+
+  finalCreateStore = compose(
+    applyMiddleware(thunk),
+    devTools(),
+    persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
+    createStore
+  );
+} else {
+  finalCreateStore = compose(
+    applyMiddleware(thunk),
+    createStore
+  );
+}
 
 const reducer = combineReducers(reducers);
 const store = finalCreateStore(reducer);
 
-class App {
-  render() {
-    return (
-      <div>
-        <Provider store={store}>
-          {() =>
-            <Router children={routes()} history={history}/>
-          }
-        </Provider>
-        <DebugPanel top right bottom>
-          <DevTools store={store} monitor={LogMonitor} />
-        </DebugPanel>
-      </div>
-    );
-  }
+const elements = [
+  <Provider store={store} key="provider">
+    {() => <Router history={history} children={routes()}/> }
+  </Provider>
+];
+
+if (__DEVTOOLS__) {
+  const {DevTools, DebugPanel, LogMonitor} = require('redux-devtools/lib/react');
+
+  elements.push(
+    <DebugPanel top right bottom key="debugpanel">
+      <DevTools store={store} monitor={LogMonitor}/>
+    </DebugPanel>
+  );
 }
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<div>{elements}</div>, document.getElementById('app'));
