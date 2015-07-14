@@ -1,11 +1,11 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const {Router} = require('react-router');
-const {history} = require('react-router/lib/HashHistory');
+const {history} = require('react-router/lib/BrowserHistory');
 const {createStore, applyMiddleware, combineReducers, compose} = require('redux');
 const {Provider} = require('react-redux');
-const { devTools, persistState } = require('redux-devtools');
-const { DevTools, DebugPanel, LogMonitor } = require('redux-devtools/lib/react');
+const {devTools, persistState} = require('redux-devtools');
+const {DevTools, DebugPanel, LogMonitor} = require('redux-devtools/lib/react');
 const thunk = require('redux-thunk');
 const reducers = require('./reducers');
 const routes = require('./routes');

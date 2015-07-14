@@ -5,7 +5,6 @@ class HelloWorld extends React.Component {
     return (
       <div>
         <h1>Hello world!</h1>
-        {this.props.children}
       </div>
     );
   }

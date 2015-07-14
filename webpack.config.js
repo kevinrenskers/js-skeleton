@@ -36,7 +36,7 @@ function buildFilename(pack, hash, ext) {
 }
 
 config = {
-  entry: ['./src/app'],
+  entry: ['./src/index'],
 
   output: {
     path: path.join(__dirname, 'public'),
