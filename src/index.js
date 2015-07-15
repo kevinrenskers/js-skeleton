@@ -34,7 +34,7 @@ const store = finalCreateStore(reducer);
 
 const elements = [
   <Provider store={store} key="provider">
-    {() => <Router history={history} children={routes()}/> }
+    {() => <Router history={history} children={routes}/> }
   </Provider>
 ];
 

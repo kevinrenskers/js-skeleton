@@ -4,11 +4,9 @@ const App = require('./App');
 const HelloWorld = require('./helloworld/HelloWorld');
 const Todos = require('./todos/Todos');
 
-module.exports = function routes() {
-  return (
-    <Route component={App}>
-      <Route path="/" component={Todos} />
-      <Route path="/hello" component={HelloWorld} />
-    </Route>
-  );
-};
+module.exports = (
+  <Route component={App}>
+    <Route path="/" component={Todos} />
+    <Route path="/hello" component={HelloWorld} />
+  </Route>
+);
