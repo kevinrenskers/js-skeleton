@@ -34,6 +34,8 @@
     "node-libs-browser": "^0.5.2",
     "rimraf": "^2.4.1",
     "style-loader": "^0.12.3",
+    "stylelint": "^0.1.2",
+    "stylelint-config-suitcss": "^0.1.0",
     "surge": "^0.14.3",
     "webpack": "^1.10.1",
     "webpack-dev-server": "^1.10.1"

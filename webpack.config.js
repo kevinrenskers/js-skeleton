@@ -8,6 +8,8 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var packageJson = require('./package.json');
 var assign = require('lodash.assign');
+var stylelint = require('stylelint');
+var configSuitcss = require('stylelint-config-suitcss');
 
 var isDev = process.env.NODE_ENV !== 'production';
 var useHash = false;
@@ -49,7 +51,7 @@ config = {
     new HtmlWebpackPlugin(assign({}, htmlOptions, {filename: '200.html'})),
     new webpack.DefinePlugin({
       __DEVTOOLS__: isDev
-    }),
+    })
   ],
 
   module: {
@@ -90,6 +92,10 @@ if (isDev) {
       loaders: ['style', 'css?sourceMap', 'cssnext?sourceMap']
     }
   );
+
+  config.cssnext = {
+    plugins: [stylelint(configSuitcss)]
+  };
 } else {
   // clear out output folder if so configured
   if (clearBeforeBuild) {
