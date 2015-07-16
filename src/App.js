@@ -1,7 +1,7 @@
 const React = require('react');
 const {Link} = require('react-router/lib/Link');
 
-class Main extends React.Component {
+class App extends React.Component {
   render() {
     return (
       <div>
@@ -15,4 +15,4 @@ class Main extends React.Component {
   }
 }
 
-module.exports = Main;
+module.exports = App;
